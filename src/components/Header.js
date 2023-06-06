@@ -1,7 +1,8 @@
 import React from "react";
 import Search from "./Search";
 
-function Header() {
+
+function Header({search , onhandleSubmit}) {
   return (
     <header>
       <h1>
@@ -11,6 +12,7 @@ function Header() {
         gregslist
       </h1>
       <Search />
+      <Search search={search} onhandleSubmit={onhandleSubmit} />
     </header>
   );
 }

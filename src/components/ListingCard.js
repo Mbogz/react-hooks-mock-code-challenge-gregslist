@@ -1,6 +1,22 @@
 import React from "react";
 
+
 function ListingCard() {
+  function ListingCard({listing , onDelete}) {
+    const [trueOrFalse , setTrueorFalse] = useState(true)
+  
+    function handleTrueorFalse() {
+      setTrueorFalse(isitTrue => !isitTrue)
+    }
+  
+    function handleDelete(e) {
+      e.preventDefault()
+      fetch(`http://localhost:6001/listings/${listing.id}` , {
+        method: 'DELETE',
+      })
+      .then(res => res.json())
+      .then(() => {onDelete(listing.id)})}
+
   return (
     <li className="card">
       <div className="image">
@@ -19,6 +35,7 @@ function ListingCard() {
       </div>
     </li>
   );
+}
 }
 
 export default ListingCard;
